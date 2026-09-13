@@ -338,14 +338,18 @@ Add each app's environment variables in Vercel → Settings → Environment Vari
 
 ---
 
-## Acknowledgements
 
-Built following [Code With Antonio](https://www.youtube.com/@codewithantonio)'s B2B SaaS AI support platform series.
-
----
 
 <div align="center">
 
-Built with Next.js, Convex, and Turborepo.
+Built with 💖
+
+
+</div>
+
+<div align="center">
+
+If this project helped you, drop a ⭐ on GitHub!
+
 
 </div>
