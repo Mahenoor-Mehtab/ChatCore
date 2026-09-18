@@ -1,21 +1,17 @@
-import { Button } from "@workspace/ui/components/button"
-import { Input } from "@workspace/ui/components/input"
+"use client";
+
+import { useQuery } from "convex/react";
+import { api } from "@workspace/backend/convex/_generated/api";
 
 export default function Page() {
+  const users = useQuery((api as any).users.getMany);
+
   return (
     <div className="flex min-h-svh flex-col items-center justify-center gap-4 p-6">
-      <div className="flex max-w-md flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
-        </div>
-        <Input placeholder="Enter your email..." />
-        <div className="text-muted-foreground font-mono text-xs">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
-      </div>
+      <p>apps/web</p>
+      {users?.map((user: any) => (
+        <div key={user._id}>{user.name}</div>
+      ))}
     </div>
-  )
+  );
 }
