@@ -1,17 +1,26 @@
 "use client";
 
+import { Authenticated, Unauthenticated } from "convex/react";
+import { SignInButton, UserButton } from "@clerk/nextjs";
 import { useQuery } from "convex/react";
 import { api } from "@workspace/backend/convex/_generated/api";
 
-export default function Page() {
-  const users = useQuery((api as any).users.getMany);
-
+export default function Home() {
   return (
-    <div className="flex min-h-svh flex-col items-center justify-center gap-4 p-6">
-      <p>apps/web</p>
-      {users?.map((user: any) => (
-        <div key={user._id}>{user.name}</div>
-      ))}
-    </div>
+    <>
+      <Authenticated>
+        <UserButton />
+        {/* <Content /> */}
+      </Authenticated>
+      <Unauthenticated>
+        <SignInButton />
+      </Unauthenticated>
+    </>
   );
+}
+
+function Content() {
+  const messages = useQuery(api.messages.getForCurrentUser);
+  return <div>Authenticated content: {messages?.length}</div>;
+ 
 }
